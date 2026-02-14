@@ -1,3 +1,5 @@
+> 当前分支：ui-mobile（Vant 版本）
+
 # Vue3 Starter 模板
 
 > 🚀 This repository is a Vue3 project template.  

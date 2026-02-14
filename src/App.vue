@@ -1,4 +1,7 @@
 <script setup>
+import { showToast } from 'vant'
+showToast('提示内容')
+
 // 使用仓库数据
 import { useDemoStore } from '@/stores/index.js'
 const demoStore = useDemoStore()
@@ -53,6 +56,7 @@ onMounted(() => {
   <!-- main -->
   <div>
     <div>以下仅为使用示例：</div>
+    <van-button type="primary" />
     <div>公共数据count：{{ commonCount }}</div>
     <div>普通非响应式数据name: {{ name }}</div>
     <div>普通响应式数据greetMsg: {{ greetMsg }}</div>
