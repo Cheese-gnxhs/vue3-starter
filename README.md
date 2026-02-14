@@ -13,7 +13,7 @@ cd my-project
 rm -rf .git  # 删除全部git历史（必须要！否则会跟模板形成关联）
 git init
 git add .
-git commit -m "init from mobile template"
+git commit -m "init from mobile/pc template"
 ```
 
 **方法2：「Use this template」**
