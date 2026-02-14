@@ -10,10 +10,18 @@
     "lint": "run-s lint:*",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "pinia": "^3.0.4",
+    "pinia-plugin-persistedstate": "^4.7.1",
     "vue": "^3.5.27",
     "vue-router": "^5.0.1"
   },
@@ -25,9 +33,12 @@
     "eslint-plugin-oxlint": "~1.42.0",
     "eslint-plugin-vue": "~10.7.0",
     "globals": "^17.3.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^16.2.7",
     "npm-run-all2": "^8.0.4",
     "oxlint": "~1.42.0",
     "prettier": "3.8.1",
+    "sass": "^1.97.3",
     "vite": "^7.3.1",
     "vite-plugin-vue-devtools": "^8.0.5"
   },
