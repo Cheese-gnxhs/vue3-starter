@@ -2,6 +2,7 @@
 
 > 🚀 This repository is a Vue3 project template.  
 > Click "Use this template" to create a new project.
+
 > 🚀 Vue3 项目基础模板仓库。  
 > 点击「Use this template」按钮可基于本模板创建新项目。
 
