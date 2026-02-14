@@ -1,78 +1,237 @@
-# vue3-starter
+# Vue3 Starter 模板
 
-This template should help get you started developing with Vue 3 in Vite.
+一个基于 Vue 3 + Vite 的前端项目初始化模板。
 
-## Recommended IDE Setup
+目标：  
+提供一个结构清晰、工程化规范完整、可长期维护与扩展的前端基础骨架。
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+---
 
-## Recommended Browser Setup
+## 🚀 技术栈
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Vue 3
+- Vite
+- Vue Router
+- Pinia
+- Axios
+- SCSS
+- ESLint
+- Husky + lint-staged
+- pnpm
 
-## Customize configuration
+---
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+# 📦 安装依赖
 
 ```sh
 pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+---
+
+# 🧪 本地开发
 
 ```sh
 pnpm dev
 ```
 
-### Compile and Minify for Production
+启动开发服务器，支持热更新。
+
+---
+
+# 🏗 生产环境构建
 
 ```sh
 pnpm build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+构建产物输出至：
 
-```sh
-pnpm lint
+```
+dist/
 ```
 
-### 开发须知
+---
 
-views与路由的结构推荐
-src/views/
+# 🔍 代码检查
+
+| 命令           | 作用                             |
+| -------------- | -------------------------------- |
+| pnpm lint      | 只跑 eslint（全量）              |
+| pnpm lint:fix  | eslint 全量修复                  |
+| pnpm format    | prettier 全量格式化              |
+| pnpm check     | eslint + prettier 检查           |
+| pnpm check:all | oxlint + eslint + prettier       |
+| 提交时         | eslint + prettier 只针对改动文件 |
+
+---
+
+# 📂 目录结构说明
+
+```
+src/
+├── api/            # 接口模块（按业务拆分）
+├── assets/         # 静态资源
+├── components/     # 公共组件
+├── layout/         # 布局组件
+├── router/         # 路由配置
+├── store/          # Pinia 状态管理
+├── styles/         # 全局样式
+│   ├── reset.scss
+│   ├── base.scss
+│   └── variables.scss
+├── utils/          # 工具函数（如 request）
+├── views/          # 页面组件（路由级组件）
+└── main.js
+```
+
+---
+
+# 🛣 路由结构规范
+
+## 一级路由 = 业务模块目录
+
+示例：
+
+```
+views/
 ├── home/
-│ └── HomeIndex.vue # /
-├── explore/
-│ ├── ExploreIndex.vue # /explore
-│ ├── CategoryList.vue # /explore/categories
-│ └── TagList.vue # /explore/tags
-├── posts/
-│ ├── PostList.vue # /posts
-│ ├── PostDetail.vue # /posts/:id
-│ ├── PostCreate.vue # /posts/new
-│ └── PostEdit.vue # /posts/:id/edit
-├── authors/
-│ ├── AuthorList.vue # /authors
-│ └── AuthorProfile.vue # /authors/:id
-├── account/
-│ ├── Login.vue # /account/login
-│ ├── Register.vue # /account/register
-│ └── Settings.vue # /account/settings
-├── user/
-│ ├── UserCenterLayout.vue # /user (二级路由容器)
-│ ├── Overview.vue # /user/overview
-│ ├── Favorites.vue # /user/favorites
-│ ├── Collections.vue # /user/collections
-│ └── Subscriptions.vue # /user/subscriptions
-└── errors/
-├── NotFound.vue # 404
-└── Forbidden.vue # 403
+│   ├── HomeLayout.vue
+│   ├── HomeOne.vue
+│   ├── HomeTwo.vue
+```
 
-**命名规则建议（统一就舒服）** -模块首页：XxxIndex.vue（如 HomeIndex.vue, ExploreIndex.vue）-列表页：XxxList.vue -详情页：XxxDetail.vue -创建/编辑：XxxCreate.vue / XxxEdit.vue -二级容器：XxxLayout.vue 或 XxxCenterLayout.vue
+## 二级路由使用相对路径
+
+推荐写法：
+
+```js
+{
+  path: '/home',
+  component: () => import('@/views/home/HomeLayout.vue'),
+  children: [
+    { path: '', redirect: 'one' },
+    { path: 'one', component: () => import('@/views/home/HomeOne.vue') }
+  ]
+}
+```
+
+⚠ 不建议在 children 中使用以 `/` 开头的绝对路径。
+
+---
+
+# 🗂 状态管理规范（Pinia）
+
+- 各模块放在 `store/modules`
+- 统一在 `store/index.js` 导出
+- 推荐使用 setup 语法
+- 已内置持久化插件
+
+示例：
+
+```js
+export const useDemoStore = defineStore('demo', () => {
+  const count = ref(0)
+  const increment = () => count.value++
+  return { count, increment }
+})
+```
+
+---
+
+# 🌐 接口封装规范
+
+统一使用：
+
+```
+src/utils/request.js
+```
+
+已封装：
+
+- axios 实例
+- 请求拦截器
+- 响应拦截器
+
+接口地址使用环境变量：
+
+```
+VITE_API_BASE_URL
+```
+
+示例：
+
+```
+.env.development
+.env.production
+```
+
+使用方式：
+
+```js
+import.meta.env.VITE_API_BASE_URL
+```
+
+---
+
+# 🎨 样式规范
+
+- reset 只做基础清理
+- 字体与基础排版写在 body 中
+- 不在 `*` 上使用 font 简写属性
+- 推荐统一定义 h1 ~ h6 标题规范
+
+---
+
+# 🧱 开发建议
+
+- 页面组件只负责结构
+- 业务逻辑抽离至 store 或 composables
+- 接口按业务拆分
+- 避免全局变量污染
+- 保持目录模块化
+
+---
+
+# 🌍 部署说明
+
+默认部署在根路径 `/`：
+
+```
+https://yourdomain.com/
+```
+
+如需部署在子路径：
+
+在 vite.config.js 中设置：
+
+```js
+base: '/sub-path/'
+```
+
+同时服务器需配置 SPA 重写规则。
+
+---
+
+# 🔀 分支说明
+
+- main：稳定核心模板
+- 其他分支：功能增强版本
+
+建议从 main 派生新版本。
+
+---
+
+# 📌 扩展方向
+
+- 登录与鉴权模块
+- 权限控制
+- 全局错误处理
+- UI 框架集成
+- 国际化支持
+
+---
+
+# 📄 License
+
+MIT

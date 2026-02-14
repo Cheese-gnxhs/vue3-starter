@@ -21,17 +21,17 @@ const router = createRouter({
       component: () => import('@/views/home/HomeLayout.vue'),
       children: [
         {
-          path: '/home/one',
+          path: 'one',
           name: 'HomeOne',
           component: () => import('@/views/home/SecondOne.vue'),
         },
         {
-          path: '/home/two',
+          path: 'two',
           name: 'HomeTwo',
           component: () => import('@/views/home/SecondTwo.vue'),
         },
         {
-          path: '/home/three',
+          path: 'three',
           name: 'HomeThree',
           component: () => import('@/views/home/SecondThree.vue'),
         },

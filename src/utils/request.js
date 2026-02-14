@@ -3,7 +3,7 @@ import axios from 'axios'
 
 // 创建一个新的axios实例
 const request = axios.create({
-  baseURL: 'http://xxx', // 基地址
+  baseURL: import.meta.env.VITE_API_BASE_URL, // 基地址
   timeout: 5000,
 })
 

@@ -1,1 +1,6 @@
+# Make all text files use LF in repo
 * text=auto eol=lf
+
+# Env files
+*.env text eol=lf
+*.env.* text eol=lf

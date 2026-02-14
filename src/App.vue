@@ -34,6 +34,7 @@ watch(
   (newVal, oldVal) => {
     console.log('greetMsg或doubleGreetMsg发生了变化')
     console.log('新值:', newVal)
+
     console.log('旧值:', oldVal)
   },
   // { immediate: true, deep: true },

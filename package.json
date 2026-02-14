@@ -7,16 +7,21 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "run-s lint:*",
-    "lint:oxlint": "oxlint . --fix",
-    "lint:eslint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix --cache",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "check": "pnpm lint && pnpm format:check",
+    "check:all": "oxlint . && pnpm check",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "*.{js,vue}": [
       "eslint --fix"
+    ],
+    "*.{js,vue,css,scss,md,json,yml,yaml}": [
+      "prettier --write"
     ]
   },
   "dependencies": {

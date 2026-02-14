@@ -2,20 +2,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font:
-    14px/1.5 'Microsoft Yahei',
-    'Hiragino Sans GB',
-    'Heiti SC',
-    'WenQuanYi Micro Hei',
-    sans-serif;
+}
 
-  // 暂时为了让盒子显现，后续会删除
-  // border: 1px solid #333;
+body {
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
+  color: #333;
 }
 
 li {
   list-style: none;
 }
+
 a {
   color: #333;
   text-decoration: none;
