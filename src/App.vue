@@ -53,6 +53,7 @@ onMounted(() => {
   <!-- main -->
   <div>
     <div>以下仅为使用示例：</div>
+    <el-button type="success">Success</el-button>
     <div>公共数据count：{{ commonCount }}</div>
     <div>普通非响应式数据name: {{ name }}</div>
     <div>普通响应式数据greetMsg: {{ greetMsg }}</div>
