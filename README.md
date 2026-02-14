@@ -1,10 +1,25 @@
 # Vue3 Starter 模板
 
-> 🚀 This repository is a Vue3 project template.  
-> Click "Use this template" to create a new project.
+> 🚀 Vue3 项目基础模板仓库。
 
-> 🚀 Vue3 项目基础模板仓库。  
-> 点击「Use this template」按钮可基于本模板创建新项目。
+## 模板使用说明
+
+**方法1：直接克隆指定分支的仓库：**
+
+```sh
+git clone -b (ui-mobile) https://github.com/xxx/vue3-starter.git my-project
+cd my-project
+rm -rf .git  # 删除全部git历史（必须要！否则会跟模板形成关联）
+git init
+git add .
+git commit -m "init from mobile template"
+```
+
+**方法2：「Use this template」**
+
+点击「Use this template」按钮可基于本模板创建新项目，但只会使用其默认分支
+
+如果想使用其他分支，先改一下默认分支，然后点击「Use this template」按钮，再把默认分支改回 main
 
 ## Available Template Branches
 
