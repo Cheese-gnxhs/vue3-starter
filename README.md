@@ -1,6 +1,9 @@
 # Vue3 Starter 模板
 
-一个基于 Vue 3 + Vite 的前端项目初始化模板。
+> 🚀 This repository is a Vue3 project template.  
+> Click "Use this template" to create a new project.
+> 🚀 Vue3 项目基础模板仓库。  
+> 点击「Use this template」按钮可基于本模板创建新项目。
 
 目标：  
 提供一个结构清晰、工程化规范完整、可长期维护与扩展的前端基础骨架。
