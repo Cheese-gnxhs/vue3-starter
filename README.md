@@ -7,7 +7,8 @@
 **方法1：直接克隆指定分支的仓库：**
 
 ```sh
-git clone -b (ui-mobile) https://github.com/xxx/vue3-starter.git my-project
+git clone -b ui-mobile https://github.com/Cheese-gnxhs/vue3-starter.git
+# 或：git clone -b ui-pc https://github.com/Cheese-gnxhs/vue3-starter.git
 cd my-project
 rm -rf .git  # 删除全部git历史（必须要！否则会跟模板形成关联）
 git init
